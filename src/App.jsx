@@ -8,6 +8,7 @@ import Fact from "./pages/Fact";
 import Features from "./pages/Features";
 import MainPage from "./pages/MainPage";
 import Menus from "./pages/Menus";
+import { ScrollToTopButton } from "./pages/ScrollToTop";
 import Testimonial from "./pages/Testimonial";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Fact />
         <Testimonial />
       </main>
+      <ScrollToTopButton />
       <Footer />
     </>
   );

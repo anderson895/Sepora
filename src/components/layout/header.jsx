@@ -1,13 +1,33 @@
-
+import { useEffect, useState } from "react";
 import { FaBars, FaSearch } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";;
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
   const navigate = useNavigate();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    // Add the event listener for scroll
+    window.addEventListener("scroll", handleScroll);
+    // Cleanup on unmount
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="z-50 fixed  top-0 w-full bg-white shadow-md">
-      <div className="flex items-center justify-between px-4 sm:px-8 py-4 sm:py-6">
+    <header
+      className={`z-50 fixed top-0 w-full bg-white  transition-all duration-300 ${
+        isScrolled ? "shadow-md py-2" : "shadow-none py-4"
+      }`}
+    >
+      <div className="flex items-center justify-between px-4 sm:px-8 ">
         {/* Logo Section */}
         <div className="flex items-center">
           <h1 className="text-xl sm:text-2xl font-bold text-[#ff7e67]">
@@ -61,9 +81,7 @@ export const Header = () => {
           </nav>
 
           {/* Icon Buttons */}
-          <div className="">
-
-          </div>
+          <div className=""></div>
         </div>
       </div>
 
